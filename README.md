@@ -1,6 +1,6 @@
 ## dogFight
 
-My first Vue project
+My first Vue project.
 
 ## Built With
 
@@ -10,3 +10,5 @@ My first Vue project
 - Vue
 
 ## Live Version
+
+https://takacsnorbee.github.io/dogFight/
