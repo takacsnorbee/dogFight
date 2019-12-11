@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Vue Game Project / Dogfight</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet", type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+        <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div id="playerWrapper">
+                <h1>PLAYER</h1>
+                <img src="frenchie1.jpg">
+                <div id="playerHpWrapper">
+                    <div id="playerHp" :style="playerSize">
+                        <span>{{playerHpPoint}}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="monsterWrapper">
+                <h1>MONSTER</h1>
+                <img src="frenchie2.jpg">
+                <div id="monsterHpWrapper">
+                    <div id="monsterHp" :style="monsterSize">
+                        <span>{{monsterHpPoint}}</span>
+                    </div>
+                </div>
+             </div>
+             <div id="buttonDiv">
+                 <button id="attackBtn" type="button" @click="attack(1)">ATTACK</button>
+                 <button id="specBtn" type="button" @click="attack(2)">SPECIAL ATTACK</button>
+                 <button id="healBtn" type="button" @click="attack(-1)">HEAL</button>
+                 <button id="giveUpBtn" type="button" @click="endGame()">GIVE UP</button>
+             </div>
+             <div id="listDiv">
+
+             </div>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    playerHpPoint: 100,
+                    monsterHpPoint: 100,
+                    playerHit: [],
+                    monsterHit: []
+                },
+                methods: {
+                    randomNum: function(){
+                        return Math.floor(Math.random() * 11 + 1);
+                    },
+                    attack: function(num){
+                        let player = this.randomNum()*num;
+                        let monster = this.randomNum();
+                        this.playerHpPoint -= player;
+                        this.monsterHpPoint -= monster;
+                        this.playerHit.push(player);
+                        this.monsterHit.push(monster);
+                    },
+                    endGame: function(){
+                        
+                    }
+                }, 
+                computed: {
+                    playerSize: function(){
+                        return{
+                            width: this.playerHpPoint * 2 + 'px'
+                        }
+                    },
+                    monsterSize: function(){
+                        return{
+                            width: this.monsterHpPoint * 2 + 'px'
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

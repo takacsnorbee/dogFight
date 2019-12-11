@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    text-align: center;
+}
+
+h1 {
+    font-weight: 1000;
+}
+
+img {
+    width: 100px;
+    margin: 2rem auto;
+    border-radius: 99%;
+}
+
+span {
+    font-size: 1.2rem;
+}
+
+#playerWrapper, #monsterWrapper {
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+#playerHpWrapper, #monsterHpWrapper {
+    border: 1px solid forestgreen;
+}
+
+#playerHp, #monsterHp {
+    background-color: forestgreen;
+    color: whitesmoke;
+}
+
+#buttonDiv, #listDiv {
+    border: 1px solid darkgray;
+    box-shadow: 1px darkgray;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+button {
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin: 0 10px;
+}
+
+button:hover {
+    border: 1px solid deepskyblue;
+    box-shadow: 1px 1px deepskyblue;
+}
+
+#attackBtn {
+    background-color: crimson;
+}
+
+#specBtn {
+    background-color: darkgoldenrod;
+}
+
+#healBtn {
+    background-color: lawngreen;
+}
+
+@media (min-width: 400px) {
+    img {
+        width: 200px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    button {  
+        height: 2rem;
+    }
+    span {
+        font-size: 1.5rem;
+    }
+    #playerHp, #monsterHp, #playerHpWrapper, #monsterHpWrapper {
+        width: 200px;
+    }
+    #playerWrapper, #monsterWrapper {
+        display: inline-block;
+        margin: 10px;
+    }
+}
+
+@media (min-width: 800px) {
+    img {
+        width: 300px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    #app {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    button {  
+        height: 2.5rem;
+    }
+    span {
+        font-size: 1.8rem;
+    }
+    #playerWrapper, #monsterWrapper {
+        width: 300px;
+        margin: 20px;
+    }
+    #playerHpWrapper, #monsterHpWrapper {
+        margin-left: 50px;
+    }
+}
