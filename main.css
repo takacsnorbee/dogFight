@@ -43,7 +43,7 @@ span {
 
 #buttonDiv, #listDiv {
     border: 1px solid darkgray;
-    box-shadow: 1px darkgray;
+    box-shadow: 0px 1px darkgray;
     padding: 10px 0;
     text-align: center;
     margin-top: 2rem;
@@ -53,11 +53,16 @@ button {
     border: 1px solid gray;
     border-radius: 3px;
     margin: 0 10px;
+    box-shadow: 0px 1px darkgray;
 }
 
 button:hover {
     border: 1px solid deepskyblue;
     box-shadow: 1px 1px deepskyblue;
+}
+
+#startBtn {
+    letter-spacing: 1px;
 }
 
 #attackBtn {
@@ -70,6 +75,23 @@ button:hover {
 
 #healBtn {
     background-color: lawngreen;
+}
+
+li {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.playerTurn {
+    color: blue;
+    background-color: #e4e8ff;
+    margin-bottom: .5rem;
+}
+
+.monsterTurn {
+    color: red;
+    background-color: #ffc0c1;
+    margin-bottom: .2rem;
 }
 
 @media (min-width: 400px) {

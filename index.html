@@ -11,16 +11,20 @@
     </head>
     <body>
         <div id="app">
-            <div id="playerWrapper">
-                <h1>PLAYER</h1>
+            <section id="playerWrapper">
+                <div v-if="playerActive">
+                    <input type="text" @input="changeName" placeholder="Add your name">
+                    <button type="button" @click="playerActive = !playerActive">Send</button>
+                </div>
+                <h1 v-else>{{playerName}}</h1>
                 <img src="frenchie1.jpg">
                 <div id="playerHpWrapper">
                     <div id="playerHp" :style="playerSize">
                         <span>{{playerHpPoint}}</span>
                     </div>
                 </div>
-            </div>
-            <div id="monsterWrapper">
+            </section>
+            <section id="monsterWrapper">
                 <h1>MONSTER</h1>
                 <img src="frenchie2.jpg">
                 <div id="monsterHpWrapper">
@@ -28,55 +32,25 @@
                         <span>{{monsterHpPoint}}</span>
                     </div>
                 </div>
-             </div>
-             <div id="buttonDiv">
-                 <button id="attackBtn" type="button" @click="attack(1)">ATTACK</button>
-                 <button id="specBtn" type="button" @click="attack(2)">SPECIAL ATTACK</button>
-                 <button id="healBtn" type="button" @click="attack(-1)">HEAL</button>
-                 <button id="giveUpBtn" type="button" @click="endGame()">GIVE UP</button>
-             </div>
-             <div id="listDiv">
-
-             </div>
+            </section>
+            <section id="buttonDiv">
+                <button id="startBtn" type="button" @click="startGame" v-if="!gameIsRunning">START GAME</button>
+                <div v-else>
+                    <button id="attackBtn" type="button" @click="attack(1)">ATTACK</button>
+                    <button id="specBtn" type="button" @click="attack(2)">SPECIAL ATTACK</button>
+                    <button id="healBtn" type="button" @click="attack(-1)">HEAL</button>
+                    <button id="giveUpBtn" type="button" @click="gameIsRunning = false">GIVE UP</button>
+                </div>
+            </section>
+            <section id="listDiv" v-if="turns.length > 0">
+                <ul>
+                    <li v-for="turn in turns"
+                        :class="{'playerTurn': turn.isPlayer, 'monsterTurn': !turn.isPlayer}">
+                        {{turn.text}}
+                    </li>
+                </ul>
+             </section>
         </div>
-        <script>
-            new Vue({
-                el: '#app',
-                data: {
-                    playerHpPoint: 100,
-                    monsterHpPoint: 100,
-                    playerHit: [],
-                    monsterHit: []
-                },
-                methods: {
-                    randomNum: function(){
-                        return Math.floor(Math.random() * 11 + 1);
-                    },
-                    attack: function(num){
-                        let player = this.randomNum()*num;
-                        let monster = this.randomNum();
-                        this.playerHpPoint -= player;
-                        this.monsterHpPoint -= monster;
-                        this.playerHit.push(player);
-                        this.monsterHit.push(monster);
-                    },
-                    endGame: function(){
-                        
-                    }
-                }, 
-                computed: {
-                    playerSize: function(){
-                        return{
-                            width: this.playerHpPoint * 2 + 'px'
-                        }
-                    },
-                    monsterSize: function(){
-                        return{
-                            width: this.monsterHpPoint * 2 + 'px'
-                        }
-                    }
-                }
-            });
-        </script>
+        <script src="app.js"></script>
     </body>
 </html>
